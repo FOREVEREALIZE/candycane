@@ -7,7 +7,9 @@ import (
 )
 
 func singleHexToInt(h string) int {
-	if !slices.Contains(strings.Split("0123456789ABCDEF", ""), h) || len(h) > 1 {
+	cleanCode := strings.ToUpper(h)
+
+	if !slices.Contains(strings.Split("0123456789ABCDEF", ""), cleanCode) || len(cleanCode) > 1 {
 		panic("Invalid hex code")
 	}
 
@@ -28,7 +30,7 @@ func singleHexToInt(h string) int {
 		"D": 13,
 		"E": 14,
 		"F": 15,
-	}[h]
+	}[cleanCode]
 }
 
 func intToAnyHex(n int, p int) string {
